@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">AndroidDev1</string>
+    <string name="app_name">Happy Shopper</string>
+
+    <!-- pick list menu screen starts -->
+    <string name="pick_list_menu_header">Select a zone:</string>
+    <string name="pick_list_menu_ambient">Ambient:</string>
+    <string name="pick_list_menu_chilled">Chilled:</string>
+    <string name="pick_list_menu_frozen">Frozen:</string>
+    <string name="pick_list_menu_produce">Produce:</string>
+    <string name="pick_list_menu_next_pick_list">Next Pick List:</string>
+    <string name="pick_list_menu_main_menu">Main Menu</string>
+
+
+    <!--  -->
+
 </resources>
