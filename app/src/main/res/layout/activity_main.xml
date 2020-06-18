@@ -8,6 +8,11 @@
     android:onClick="getPickList"
     tools:context=".MainActivity">
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/theListView"></ListView>
+
     <Button
         android:id="@+id/button_ambient"
         android:layout_width="150dp"
