@@ -2,6 +2,7 @@ package com.example.androiddev1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,10 +15,22 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    DatabaseHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        db = new DatabaseHelper(this);
+        Cursor cursor = db.allData();
+        if (cursor.getCount() == 0) {
+            Toast.makeText(getApplicationContext(), "NO DATA", Toast.LENGTH_SHORT).show();
+        } else {
+            while (cursor.moveToNext()) {
+                Toast.makeText(getApplicationContext(), "Product Name:" + cursor.getString(0), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Product Description:" + cursor.getString(1), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Product ID:" + cursor.getString(2), Toast.LENGTH_SHORT).show();
+            }
+        }
 
         String[] items = {"Almond milk", "Sausages", "Prosciutto", "Mozzarella",
                             "Salad", "Coleslaw", "Ciabatta"};
@@ -48,14 +61,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
 
-    public void getAmbientList(View v) {
-        Toast myToast = Toast.makeText(getApplicationContext(),
-                "Retrieving Ambient Picklist...", Toast.LENGTH_LONG);
-        myToast.show();
-        Log.d("success", "Toast shown");
-    }
+//    public void getAmbientList(View v) {
+//        Toast myToast = Toast.makeText(getApplicationContext(),
+//                "Retrieving Ambient Picklist...", Toast.LENGTH_LONG);
+//        myToast.show();
+//        Log.d("success", "Toast shown");
+//    }
 
     public void getPickList(View v) {
         if (v.getId() == R.id.button_ambient) {
